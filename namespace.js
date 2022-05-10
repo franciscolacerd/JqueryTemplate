@@ -9,7 +9,7 @@ $(document).ready(function () {
         };
 
         _this.createFunctions = function (o) {
-            o.templateFunction = (o, val) => o ? val : null;
+            o.templateFunction = (val) => o ? val : null;
         };
 
         _this.createEvents = function (o) {
@@ -19,7 +19,7 @@ $(document).ready(function () {
         _this.render = function (o) { };
 
         _this.output = {
-            templateFunction: function (val) { _this.obj.templateFunction(_this.obj, val); },
+            templateFunction: function (val) { _this.obj.templateFunction(val); },
         };
 
         _this.init = function () {
