@@ -8,6 +8,11 @@ $(document).ready(function () {
             o.els.TemplateElement = o.el.find('.template-element');
         };
 
+        _this.vars = function () {
+            array: ['', ''],
+            string: ''
+        };
+        
         _this.createFunctions = function (o) {
             o.templateFunction = (val) => o ? val : null;
         };
@@ -32,6 +37,8 @@ $(document).ready(function () {
             _this.obj = obj;
 
             _this.createElements(obj);
+            
+            _this.vars();
 
             _this.createFunctions(obj);
 
