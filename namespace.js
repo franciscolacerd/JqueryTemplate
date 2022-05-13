@@ -9,8 +9,8 @@ $(document).ready(function () {
         };
 
         _this.vars = function () {
-            array: ['', ''],
-            string: ''
+            array: ['', ''];
+            string: '';
         };
         
         _this.createFunctions = function (o) {
