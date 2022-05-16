@@ -2,49 +2,51 @@ $(document).ready(function () {
     $.fn.Template = function () {
         var _this = this;
 
-        _this.obj = {};
+        this.obj = {};
 
-        _this.createElements = function (o) {
+        this.createElements = (o) => {
             o.els.TemplateElement = o.el.find('.template-element');
         };
 
-        _this.vars = function () {
+        this.vars = function () {
             array: ['', ''];
             string: '';
         };
         
-        _this.createFunctions = function (o) {
+        this.createFunctions = (o) =>  {
             o.templateFunction = (val) => o ? val : null;
         };
 
-        _this.createEvents = function (o) {
+        this.createEvents = (o) =>  {
             o.els.TemplateElement.on('click', function () { console.log('click'); })
         };
 
-        _this.render = function (o) { };
+        this.render = (o) =>  { };
 
-        _this.output = {
-            templateFunction: function (val) { _this.obj.templateFunction(val); },
+        var self = this;
+        
+        this.output = {
+            templateFunction: function (val) { self.obj.templateFunction(val); },
         };
 
-        _this.init = function () {
+        this.init = () =>  {
             var obj = {
                 el: $(this),
                 els: {},
                 vars: {}
             };
 
-            _this.obj = obj;
+            this.obj = obj;
 
-            _this.createElements(obj);
+            this.createElements(obj);
             
-            _this.vars();
+            this.vars();
 
-            _this.createFunctions(obj);
+            this.createFunctions(obj);
 
-            _this.createEvents(obj);
+            this.createEvents(obj);
 
-            _this.render(obj);
+            this.render(obj);
         };
 
         this.each(_this.init);
