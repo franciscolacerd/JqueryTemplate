@@ -6,6 +6,7 @@ $(document).ready(function () {
 
         this.createElements = (o) => {
             o.els.TemplateElement = o.el.find('.template-element');
+            o.els.Id = o.el.find('.some-operation-is');
         };
 
         this.vars = function () {
@@ -15,6 +16,22 @@ $(document).ready(function () {
         
         this.createFunctions = (o) =>  {
             o.templateFunction = (val) => o ? val : null;
+            o.getPromise = () => {
+                return fetch("/controller/action?id=" + o.els.Id, {
+                        method: "GET",
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                    })
+                    .then((response) => response.json())
+                    .then(function (data) {
+                        return (data ? data : null);
+                    }).catch((error) => { console.error(error);  });
+            };
+            o.getPromiseTemplate = () =>{
+                o.getPromise.then((data) => { console.log(data); });
+            };
         };
 
         this.createEvents = (o) =>  {
